@@ -2,6 +2,7 @@ import React from 'react';
 import foodBackground from '../images/berry-background.jpg';
 import Chart from './Chart';
 import { Link, useLocation } from 'react-router-dom';
+import FoodForm from './FoodForm';
 
 const HomePage = ({ foodData, searchState, setSearchState }) => {
   const location = useLocation();
@@ -63,6 +64,7 @@ const HomePage = ({ foodData, searchState, setSearchState }) => {
             </div>
           </form>
         </div>
+        <FoodForm />
       </section>
     </div>
   );
