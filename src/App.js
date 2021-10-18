@@ -3,7 +3,6 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/Navbar';
 import HomePage from './components/HomePage';
 import Login from './components/LoginForm';
-import LogFood from './components/FoodForm';
 import SignUp from './components/SignupForm';
 
 function App() {
@@ -41,22 +40,9 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/">
-            <HomePage
-              searchState={searchState}
-              setSearchState={setSearchState}
-              foodData={foodData}
-            />
-          </Route>
           <Route exact path="/signin" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/logfood">
-            <LogFood
-              getFoodData={getFoodData}
-              searchState={searchState}
-              setSearchState={setSearchState}
-            />
-          </Route>
+          <HomePage getFoodData={getFoodData} />
         </Switch>
       </div>
     </Router>

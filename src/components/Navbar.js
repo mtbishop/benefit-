@@ -30,14 +30,6 @@ function Navbar() {
               Login
             </Link>
           </li>
-          <li className="pr-5 text-2xl text-darkgray">
-            <Link
-              to="/logfood"
-              className={location.pathname === '/logfood' ? 1 : 0}
-            >
-              Log Food
-            </Link>
-          </li>
         </ul>
       </div>
     </nav>

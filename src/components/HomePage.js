@@ -1,12 +1,8 @@
 import React from 'react';
 import foodBackground from '../images/berry-background.jpg';
-import Chart from './Chart';
-import { Link, useLocation } from 'react-router-dom';
-import FoodForm from './FoodForm';
+import OnSubmitButton from './OnSubmitButton';
 
-const HomePage = ({ foodData, searchState, setSearchState }) => {
-  const location = useLocation();
-
+const HomePage = ({ searchState, setSearchState }) => {
   return (
     <div
       className="h-full"
@@ -20,18 +16,8 @@ const HomePage = ({ foodData, searchState, setSearchState }) => {
       <section className="h-screen w-full flex justify-center">
         <div className="m-10">
           <form>
-            <div className="px-4">
-              <button
-                className="bg-offwhite hover:bg-turquoise text-darkgray text-2xl font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-              >
-                <Link
-                  to="/logfood"
-                  className={location.pathname === '/logfood' ? 1 : 0}
-                >
-                  Log Food <i className="fas fa-plus-circle"></i>
-                </Link>
-              </button>
+            <div className="px-6">
+              <OnSubmitButton />
             </div>
             <div className="m-2 rounded p-2 bg-tangerine">
               <h3 className="bg-tangerine text-2xl text-center">
@@ -41,14 +27,16 @@ const HomePage = ({ foodData, searchState, setSearchState }) => {
                 {/* <h2 className="bg-turquoise p-2">Meal</h2> */}
                 <ul>
                   <li className="bg-offwhite">
-                    <textarea
-                      onChange={(event) => setSearchState(event.target.value)}
+                    <input
+                      type="text"
+                      // onSubmit={(event) => setSearchState(event.target.value)}
                       value={searchState}
-                      cols="70"
-                      rows="1"
-                      className="p-3 bg-offwhite"
-                      placeholder="1 Egg"
-                    ></textarea>
+                      name="food"
+                      className="shadow appearance-none border rounded w-full py-2
+                      px-3 text-darkgray leading-tight focus:outline-none
+                      focus:shadow-outline border-gray-300"
+                      placeholder="1 Toast"
+                    />
                   </li>
                 </ul>
               </div>
@@ -56,15 +44,12 @@ const HomePage = ({ foodData, searchState, setSearchState }) => {
 
             <div className="p-2 m-2 rounded bg-tangerine">
               <h3 className="text-2xl text-center rounded-lg">
-                This Week's Calorie Consumption
+                Searched foods nutrients:
               </h3>
-              <div className="bg-offwhite rounded m-2">
-                {foodData && <Chart foodData={foodData} />}
-              </div>
+              <div className="bg-offwhite rounded m-2"></div>
             </div>
           </form>
         </div>
-        <FoodForm />
       </section>
     </div>
   );
