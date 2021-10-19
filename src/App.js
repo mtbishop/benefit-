@@ -18,7 +18,7 @@ function App() {
     axios
       .get(apiGetLink)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         setFoodData(response.data);
         const food = {
           calories: response.data.calories,
@@ -28,7 +28,7 @@ function App() {
           fat: response.data.totalNutrients.FAT.quantity,
         };
         axios
-          .post('/api/food', food)
+          .post('/', food)
           .then((data) => console.log(data))
           .catch((err) => console.log(err));
       })
@@ -37,11 +37,13 @@ function App() {
 
   return (
     <Router>
+      q
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/signin" component={Login} />
+          {/* <Route exact path="/signin" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" component={HomePage} /> */}
           <HomePage getFoodData={getFoodData} />
         </Switch>
       </div>
